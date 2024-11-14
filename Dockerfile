@@ -1,6 +1,22 @@
+# Use a Node.js base image
+FROM node:16 AS build
 
-# Step 8: Use a lightweight web server (like Nginx) to serve the Angular app
+# Set working directory
+WORKDIR /app
+
+# Install dependencies
+COPY package*.json ./
+RUN npm install
+
+# Copy application source
+COPY . .
+
+# Build the application
+RUN npm run build --prod
+
+# Use an nginx image to serve the app
 FROM nginx:alpine
+COPY --from=build /app/dist/helloworld /usr/share/nginx/html
 
-# Step 9: Copy the built Angular files from the build stage to the Nginx server
-COPY --from=build /app/dist/hello-world /usr/share/nginx/html
+# Expose port 80
+EXPOSE 80
