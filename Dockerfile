@@ -1,5 +1,5 @@
 # Use a stable Node.js LTS base image
-FROM node:18.17.1-apline AS build
+FROM node:18 AS build
 
 # Set working directory
 WORKDIR /app
