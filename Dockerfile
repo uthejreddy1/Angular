@@ -16,6 +16,7 @@ RUN npm run build --prod
 
 # Check if the output path is correct
 RUN ls -la /app/dist
+RUN ls -la /app/dist/hello-world
 
 # Use an nginx image to serve the app
 FROM nginx:alpine
