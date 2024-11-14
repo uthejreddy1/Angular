@@ -16,7 +16,7 @@ RUN npm run build --prod
 
 # Use an nginx image to serve the app
 FROM nginx:alpine
-COPY --from=build /app/dist/helloworld /usr/share/nginx/html
+COPY --from=build /app/dist/hello-world /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
