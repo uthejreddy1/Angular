@@ -23,7 +23,7 @@ RUN npm run build || tail -n 50 /root/.npm/_logs/*.log
 FROM nginx:alpine
 
 # Step 9: Copy the built Angular files from the build stage to the Nginx server
-COPY --from=build /app/dist/your-app-name /usr/share/nginx/html
+COPY --from=build /app/dist/hello-world /usr/share/nginx/html
 
 # Step 10: Expose the default Nginx port
 EXPOSE 80
