@@ -14,6 +14,9 @@ COPY . .
 # Build the application
 RUN npm run build --prod
 
+# Check if the output path is correct
+RUN ls -la /app/dist
+
 # Use an nginx image to serve the app
 FROM nginx:alpine
 COPY --from=build /app/dist/helloworld /usr/share/nginx/html
